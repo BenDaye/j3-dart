@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "dart run orm"
+  output   = "../lib/prisma"
+}
+
+datasource db {
+  provider  = "sqlite"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_DATABASE_URL")
+}
+
+model Order {
+  id    String  @id @default(uuid())
+  title String
+  done  Boolean @default(false)
+
+  Foods Food[]
+}
+
+model Food {
+  id    String @id @default(uuid())
+  name  String
+  price Int
+
+  Orders Order[]
+}

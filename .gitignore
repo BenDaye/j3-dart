@@ -1,0 +1,13 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.idea/
+
+# melos
+melos_j3.iml
+
+# Pubspec overrides
+pubspec_overrides.yaml
+
+# Environment variables
+.env*
+!.env.example

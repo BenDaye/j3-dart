@@ -1,0 +1,49 @@
+name: j3
+
+packages:
+  - apps/**
+  - packages/**
+
+scripts:
+  analyze:
+    exec: dart analyze .
+
+  prisma:generate:pos:
+    exec: npx prisma generate
+    description: 在pos包中执行npx prisma generate命令
+    packageFilters:
+      scope: pos
+
+  prisma:generate:server:
+    exec: npx prisma generate
+    description: 在server包中执行npx prisma generate命令
+    packageFilters:
+      scope: server
+
+  prisma:generate:all:
+    exec: npx prisma generate
+    description: 在所有包中执行npx prisma generate命令
+    packageFilters:
+      scope:
+        - pos
+        - server
+
+  prisma:migrate:dev:pos:
+    exec: npx prisma migrate dev
+    description: 在pos包中执行npx prisma migrate dev命令
+    packageFilters:
+      scope: pos
+
+  prisma:migrate:dev:server:
+    exec: npx prisma migrate dev
+    description: 在server包中执行npx prisma migrate dev命令
+    packageFilters:
+      scope: server
+
+  prisma:migrate:dev:all:
+    exec: npx prisma migrate dev
+    description: 在所有包中执行npx prisma migrate dev命令
+    packageFilters:
+      scope:
+        - pos
+        - server
