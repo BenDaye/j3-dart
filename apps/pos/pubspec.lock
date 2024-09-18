@@ -265,7 +265,7 @@ packages:
     source: hosted
     version: "4.0.0"
   logging:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: logging
       sha256: "623a88c9594aa774443aa3eb2d41807a48486b5613e67599fb4c41c0ad47c340"
@@ -273,7 +273,7 @@ packages:
     source: hosted
     version: "1.2.0"
   luthor:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: luthor
       sha256: "78b7b8758b95d49628adc928411f37dee0e0c9781c1fb4ab11b05373f6f38d0e"
@@ -321,7 +321,7 @@ packages:
     source: hosted
     version: "1.0.6"
   orm:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: orm
       sha256: "4010c8373d314e6c3729e8e954dbaf5ec48b8c66b2fed6046893ff0f5a05a728"
@@ -345,7 +345,7 @@ packages:
     source: hosted
     version: "2.1.0"
   path:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path
       sha256: "087ce49c3f0dc39180befefc60fdb4acd8f8620e5682fe2476afd0b3688bb4af"
@@ -353,7 +353,7 @@ packages:
     source: hosted
     version: "1.9.0"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       sha256: fec0d61223fba3154d87759e3cc27fe2c8dc498f6386c6d6fc80d1afdd1bf378
@@ -448,15 +448,8 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.1.0"
-  server:
-    dependency: "direct main"
-    description:
-      path: "../../packages/server"
-      relative: true
-    source: path
-    version: "0.0.1"
   shelf:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shelf
       sha256: ad29c505aee705f41a4d8963641f91ac4cee3c8fad5947e033390a7bd8180fa4
@@ -464,7 +457,7 @@ packages:
     source: hosted
     version: "1.4.1"
   shelf_hotreload:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shelf_hotreload
       sha256: d7099618b18d3c63ba5272491c1812c306629495129ef9996115f0417902f963
@@ -472,7 +465,7 @@ packages:
     source: hosted
     version: "1.5.0"
   shelf_router:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shelf_router
       sha256: f5e5d492440a7fb165fe1e2e1a623f31f734d3370900070b2b1e0d0428d59864
