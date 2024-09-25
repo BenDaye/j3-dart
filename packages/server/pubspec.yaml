@@ -1,7 +1,6 @@
 name: server
 description: "Server for J3"
 version: 0.0.1
-homepage:
 
 environment:
   sdk: ^3.5.3
@@ -27,6 +26,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
 
   # To add assets to your package, add an assets section, like this:
   # assets:

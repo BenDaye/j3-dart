@@ -1,13 +1,47 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pos/server/main.dart' as server;
 
 void main() async {
-  await server.Server().start();
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ],
+  );
+
+  final httpServer = await server.Server().start();
+  runApp(MyApp(httpServerUrl: '${httpServer.address.host}:${httpServer.port}'));
+
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    debugPrint(details.toString());
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Error'),
+      ),
+      body: Center(
+        child: Text(details.toString()),
+      ),
+    );
+  };
+
+  if (Platform.isAndroid) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+      ),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String httpServerUrl;
+
+  const MyApp({super.key, required this.httpServerUrl});
 
   // This widget is the root of your application.
   @override
@@ -33,13 +67,20 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(
+        title: 'Flutter Demo Home Page',
+        httpServerUrl: httpServerUrl,
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({
+    super.key,
+    required this.title,
+    required this.httpServerUrl,
+  });
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -51,6 +92,7 @@ class MyHomePage extends StatefulWidget {
   // always marked "final".
 
   final String title;
+  final String httpServerUrl;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -113,6 +155,10 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            const Text('Server:'),
+            Text(
+              widget.httpServerUrl,
             ),
           ],
         ),

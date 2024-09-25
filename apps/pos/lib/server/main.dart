@@ -29,6 +29,11 @@ class Server {
       OrderController(prismaClient: prismaClient).router.call,
     );
 
+    router.all('/', (shelf.Request request) async {
+      await Future.delayed(const Duration(seconds: 1));
+      return shelf.Response.ok('Hello, World!');
+    });
+
     final handler = const shelf.Pipeline()
         .addMiddleware(shelf.logRequests())
         .addHandler(router.call);
