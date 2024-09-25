@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pos/server/main.dart';
-
-export 'prisma/client.dart';
-export 'prisma/model.dart';
-export 'prisma/prisma.dart';
+import 'package:pos/server/main.dart' as server;
 
 void main() async {
-  final server = Server();
-  await server.start();
-
+  await server.Server().start();
   runApp(const MyApp());
 }
 
